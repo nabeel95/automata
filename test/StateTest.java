@@ -9,7 +9,7 @@ public class StateTest {
 
     @Before
     public void setUp() {
-        state = new State("q1", false, false);
+        state = new State("q1");
     }
 
     @Test
@@ -40,5 +40,17 @@ public class StateTest {
         state.bindTransition(new Transition("q1", "0", "q2"));
         state.bindTransition(new Transition("q1", "1", "q3"));
         Assert.assertEquals("q3", state.move("1"));
+    }
+
+    @Test
+    public void shouldSetIsInitial() {
+        state.setAsInitial();
+        Assert.assertTrue(state.isInitial());
+    }
+
+    @Test
+    public void shouldSetIsFinal() {
+        state.setAsFinal();
+        Assert.assertTrue(state.isFinal());
     }
 }
